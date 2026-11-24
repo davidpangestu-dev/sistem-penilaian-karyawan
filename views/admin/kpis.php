@@ -40,7 +40,7 @@
                         <td><?= e($r['weight']) ?>%</td>
                         <td><a class="btn btn-sm btn-outline-primary"
                                 href="<?= url('kpi-form', ['id' => $r['id']]) ?>">Edit</a>
-                            <form class="d-inline" method="post" onsubmit="return confirm('Hapus KPI?')"><input
+                            <form class="d-inline" method="post" onsubmit="return confirm('PERINGATAN: Menghapus KPI ini juga akan menghapus seluruh realisasi dan riwayat penilaiannya. Lanjutkan?')"><input
                                     type="hidden" name="_csrf" value="<?= csrf() ?>"><input type="hidden" name="action"
                                     value="kpi_delete"><input type="hidden" name="id" value="<?= $r['id'] ?>"><button
                                     class="btn btn-sm btn-outline-danger">Hapus</button></form>

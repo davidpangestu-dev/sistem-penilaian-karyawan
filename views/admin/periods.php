@@ -21,7 +21,7 @@
                         </td>
                         <td><a class="btn btn-sm btn-outline-primary"
                                 href="<?= url('period-form', ['id' => $r['id']]) ?>">Edit</a>
-                            <form class="d-inline" method="post" onsubmit="return confirm('Hapus periode?')"><input
+                            <form class="d-inline" method="post" onsubmit="return confirm('PERINGATAN: Menghapus periode ini juga akan menghapus seluruh KPI dan riwayat penilaian di dalamnya. Lanjutkan?')"><input
                                     type="hidden" name="_csrf" value="<?= csrf() ?>"><input type="hidden" name="action"
                                     value="period_delete"><input type="hidden" name="id" value="<?= $r['id'] ?>"><button
                                     class="btn btn-sm btn-outline-danger">Hapus</button></form>
