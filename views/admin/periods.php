@@ -15,21 +15,21 @@
                 </tr>
             </thead>
             <tbody><?php foreach ($data['rows'] as $r): ?><tr>
-                    <td><?= monthName((int)$r['month']) . ' ' . $r['year'] ?></td>
-                    <td><span
-                            class="badge text-bg-<?= $r['status'] === 'open' ? 'success' : 'secondary' ?>"><?= e($r['status']) ?></span>
-                    </td>
-                    <td><a class="btn btn-sm btn-outline-primary"
-                            href="<?= url('period-form', ['id' => $r['id']]) ?>">Edit</a>
-                        <form class="d-inline" method="post" onsubmit="return confirm('Hapus periode?')"><input
-                                type="hidden" name="_csrf" value="<?= csrf() ?>"><input type="hidden" name="action"
-                                value="period_delete"><input type="hidden" name="id" value="<?= $r['id'] ?>"><button
-                                class="btn btn-sm btn-outline-danger">Hapus</button></form>
-                    </td>
-                </tr><?php endforeach;
+                        <td><?= monthName((int)$r['month']) . ' ' . $r['year'] ?></td>
+                        <td><span
+                                class="badge text-bg-<?= $r['status'] === 'open' ? 'success' : 'secondary' ?>"><?= e($r['status']) ?></span>
+                        </td>
+                        <td><a class="btn btn-sm btn-outline-primary"
+                                href="<?= url('period-form', ['id' => $r['id']]) ?>">Edit</a>
+                            <form class="d-inline" method="post" onsubmit="return confirm('Hapus periode?')"><input
+                                    type="hidden" name="_csrf" value="<?= csrf() ?>"><input type="hidden" name="action"
+                                    value="period_delete"><input type="hidden" name="id" value="<?= $r['id'] ?>"><button
+                                    class="btn btn-sm btn-outline-danger">Hapus</button></form>
+                        </td>
+                    </tr><?php endforeach;
                         if (!$data['rows']): ?><tr>
-                    <td colspan="3" class="text-center">Belum ada periode.</td>
-                </tr><?php endif; ?></tbody>
+                        <td colspan="3" class="text-center">Belum ada periode.</td>
+                    </tr><?php endif; ?></tbody>
         </table>
     </div>
 </div>

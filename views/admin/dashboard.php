@@ -1,1 +1,37 @@
-<h4 class="fw-bold mb-1">Dashboard</h4><p class="text-secondary">Selamat datang, <?= e(currentUser()['name']) ?>.</p><div class="row g-3 mb-4"><?php foreach([['Total Karyawan',$data['employees'],'primary'],['Periode Penilaian',$data['periods'],'info'],['Penilaian Selesai',$data['completed'],'success'],['Menunggu Penilaian',$data['pending'],'warning']] as $s): ?><div class="col-md-6 col-xl-3"><div class="card p-3"><div class="text-secondary small"><?= $s[0] ?></div><div class="stat-number text-<?= $s[2] ?>"><?= (int)$s[1] ?></div></div></div><?php endforeach; ?></div><div class="card p-3"><h5 class="fw-bold">Aktivitas KPI Terbaru</h5><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Karyawan</th><th>KPI</th><th>Periode</th><th>Status</th></tr></thead><tbody><?php foreach($data['recent'] as $r): ?><tr><td><?= e($r['employee']) ?></td><td><?= e($r['kpi']) ?></td><td><?= monthName((int)$r['month']).' '.$r['year'] ?></td><td><span class="badge text-bg-<?= $r['status']==='published'?'success':($r['status']==='Belum diisi'?'secondary':'warning') ?>"><?= e($r['status']==='draft'?'Draft':($r['status']==='submitted'?'Menunggu Penilaian':($r['status']==='published'?'Dipublikasikan':$r['status']))) ?></span></td></tr><?php endforeach; if(!$data['recent']): ?><tr><td colspan="4" class="text-center text-secondary">Belum ada aktivitas.</td></tr><?php endif; ?></tbody></table></div></div>
+<h4 class="fw-bold mb-1">Dashboard</h4>
+<p class="text-secondary">Selamat datang, <?= e(currentUser()['name']) ?>.</p>
+<div class="row g-3 mb-4">
+    <?php foreach ([['Total Karyawan', $data['employees'], 'primary'], ['Periode Penilaian', $data['periods'], 'info'], ['Penilaian Selesai', $data['completed'], 'success'], ['Menunggu Penilaian', $data['pending'], 'warning']] as $s): ?>
+        <div class="col-md-6 col-xl-3">
+            <div class="card p-3">
+                <div class="text-secondary small"><?= $s[0] ?></div>
+                <div class="stat-number text-<?= $s[2] ?>"><?= (int)$s[1] ?></div>
+            </div>
+        </div><?php endforeach; ?>
+</div>
+<div class="card p-3">
+    <h5 class="fw-bold">Aktivitas KPI Terbaru</h5>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th>Karyawan</th>
+                    <th>KPI</th>
+                    <th>Periode</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody><?php foreach ($data['recent'] as $r): ?><tr>
+                        <td><?= e($r['employee']) ?></td>
+                        <td><?= e($r['kpi']) ?></td>
+                        <td><?= monthName((int)$r['month']) . ' ' . $r['year'] ?></td>
+                        <td><span
+                                class="badge text-bg-<?= $r['status'] === 'published' ? 'success' : ($r['status'] === 'Belum diisi' ? 'secondary' : 'warning') ?>"><?= e($r['status'] === 'draft' ? 'Draft' : ($r['status'] === 'submitted' ? 'Menunggu Penilaian' : ($r['status'] === 'published' ? 'Dipublikasikan' : $r['status']))) ?></span>
+                        </td>
+                    </tr><?php endforeach;
+                        if (!$data['recent']): ?><tr>
+                        <td colspan="4" class="text-center text-secondary">Belum ada aktivitas.</td>
+                    </tr><?php endif; ?></tbody>
+        </table>
+    </div>
+</div>
