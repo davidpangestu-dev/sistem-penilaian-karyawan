@@ -35,7 +35,6 @@
             <div class="mb-4"><label class="form-label">Password</label><input type="password" class="form-control"
                     name="password" required></div><button class="btn btn-primary w-100">Masuk</button>
         </form>
-        <p class="small text-secondary mt-4 mb-0">Gunakan akun demo yang tercantum pada README.md.</p>
     </div>
 </body>
 
